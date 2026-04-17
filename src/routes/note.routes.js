@@ -9,7 +9,7 @@ const {
   replaceNote,
   updateNote,
   deleteNote,
-
+  deleteNotesBulk
 } = require("../controllers/note.controller");
 
 router.post("/", createNote);
@@ -19,7 +19,7 @@ router.get("/:id", getNoteById);
 router.put("/:id", replaceNote);
 router.patch("/:id", updateNote);
 router.delete("/:id", deleteNote);
-
+router.delete("/bulk", deleteNotesBulk);
 
 
 module.exports = router;
