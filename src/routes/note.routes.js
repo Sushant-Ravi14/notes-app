@@ -7,6 +7,7 @@ const {
   getAllNotes,
   getNoteById,
   replaceNote,
+  updateNote,
 
 } = require("../controllers/note.controller");
 
@@ -15,6 +16,7 @@ router.post("/bulk", createNotesBulk);
 router.get("/", getAllNotes);
 router.get("/:id", getNoteById);
 router.put("/:id", replaceNote);
+router.patch("/:id", updateNote);
 
 
 module.exports = router;
