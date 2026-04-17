@@ -36,3 +36,31 @@ exports.createNote = async (req, res) => {
 
 
 
+exports.createNotesBulk = async (req, res) => {
+  try {
+    const { notes } = req.body;
+
+    if (!notes || notes.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Notes array is required",
+        data: null
+      });
+    }
+
+    const createdNotes = await Note.insertMany(notes);
+
+    res.status(201).json({
+      success: true,
+      message: `${createdNotes.length} notes created successfully`,
+      data: createdNotes
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null
+    });
+  }
+};
